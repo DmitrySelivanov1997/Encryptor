@@ -21,6 +21,7 @@ namespace Encryptor
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Введие директорию");
             var dir = new DirectoryInfo(Console.ReadLine() ?? throw new InvalidOperationException());
             ThreadForFilesSearch.Start(dir);//поиск файлов и запись их в стек в отдельном потоке
             ThreadForFileEncryptionN1.Start();//потоки для шифрофания
