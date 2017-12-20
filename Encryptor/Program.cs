@@ -86,10 +86,10 @@ namespace Encryptor
                         rwl.ReleaseWriterLock();
                     }
                     byte[] original = File.ReadAllBytes(file); //читаем байты файла
-                    string plainText = null;
+                    StringBuilder plainText = new StringBuilder();
                     foreach (var b in original)
                     {
-                        plainText += b + "/"; //записываем байты в строку, так как я нашел только реализацию шифрования строки, а не массива сразу
+                       plainText.Append(b + "/"); //записываем байты в строку, так как я нашел только реализацию шифрования строки, а не массива сразу
                     }
                     /*
                      * 
@@ -98,7 +98,7 @@ namespace Encryptor
                      */
                     using (var myAes = Aes.Create()) // Создаем новый экземпляр класса Aes  Создаем ключ и вектор инициализации (IV)
                     {
-                        byte[] encrypted = EncryptStringToBytesAes(plainText, myAes.Key, myAes.IV);// Зашифрованную строку переводим в массив байтов
+                        byte[] encrypted = EncryptStringToBytesAes(plainText.ToString(), myAes.Key, myAes.IV);// Зашифрованную строку переводим в массив байтов
                         File.WriteAllBytes(file, encrypted); // теперь наш файл зашифрован
                         /*
                          * 
